@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineExplora - Votre Guide Cinéma Élégant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Élégant -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>CineExplora</h1>
+                    <p>Votre guide cinéma raffiné</p>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active" data-view="discover">
+                    <i class="fas fa-compass"></i>
+                    <span>Découverte</span>
+                </a>
+                <a href="#" class="nav-link" data-view="collections">
+                    <i class="fas fa-heart"></i>
+                    <span>Mes Collections</span>
+                </a>
+                <a href="#" class="nav-link" data-view="watchlist">
+                    <i class="fas fa-bookmark"></i>
+                    <span>À Voir</span>
+                </a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn cinema-mode" id="cinemaMode" title="Mode Cinéma">
+                    <i class="fas fa-theater-masks"></i>
+                </button>
+                <button class="action-btn theme-toggle" id="themeToggle" title="Changer le thème">
+                    <i class="fas fa-palette"></i>
+                </button>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section Raffinée -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Des Émotions en Grand Écran</h2>
+                    <p>Découvrez des perles cinématographiques et créez vos collections personnelles avec élégance</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="moviesCount">0</span>
+                        <span class="stat-label">Films Découverts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="favoritesCount">0</span>
+                        <span class="stat-label">Coups de Cœur</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="floating-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="floating-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barre de Recherche Élégante -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Rechercher un film, un réalisateur...">
+                    <button class="search-clear" id="clearSearch">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-filters">
+                    <select id="genreFilter" class="elegant-select">
+                        <option value="">Tous les genres</option>
+                    </select>
+                    <select id="yearFilter" class="elegant-select">
+                        <option value="">Toutes les années</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenu Principal -->
+        <main class="main-content">
+            <!-- Vue Découverte -->
+            <div class="view active" id="discoverView">
+                <div class="view-header">
+                    <h3>Découvertes du Moment</h3>
+                    <div class="view-actions">
+                        <button class="view-btn active" data-filter="trending">
+                            <i class="fas fa-fire"></i>
+                            Tendance
+                        </button>
+                        <button class="view-btn" data-filter="new">
+                            <i class="fas fa-sparkles"></i>
+                            Nouveautés
+                        </button>
+                        <button class="view-btn" data-filter="classic">
+                            <i class="fas fa-gem"></i>
+                            Classiques
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="movies-grid" id="moviesGrid">
+                    <!-- Films chargés dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Vue Collections -->
+            <div class="view" id="collectionsView">
+                <div class="collections-container">
+                    <div class="collection-card create-collection">
+                        <div class="collection-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h4>Nouvelle Collection</h4>
+                        <p>Créez une collection personnalisée</p>
+                    </div>
+                    <!-- Collections chargées dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Vue À Voir -->
+            <div class="view" id="watchlistView">
+                <div class="watchlist-container">
+                    <div class="empty-state" id="emptyWatchlist">
+                        <i class="fas fa-bookmark"></i>
+                        <h4>Votre liste est vide</h4>
+                        <p>Ajoutez des films que vous souhaitez voir plus tard</p>
+                    </div>
+                    <div class="watchlist-movies" id="watchlistMovies">
+                        <!-- Films à voir chargés dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Pagination Élégante -->
+        <div class="pagination" id="pagination">
+            <button class="page-btn elegant-btn" id="prevPage">
+                <i class="fas fa-chevron-left"></i>
+                Précédent
+            </button>
+            <div class="page-indicator">
+                <span id="pageInfo">Page 1</span>
+            </div>
+            <button class="page-btn elegant-btn" id="nextPage">
+                Suivant
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Film Raffiné -->
+    <div class="modal" id="movieModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenu du modal chargé dynamiquement -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nouvelle Collection -->
+    <div class="modal" id="collectionModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeCollectionModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <h3>Créer une Nouvelle Collection</h3>
+                <form id="collectionForm">
+                    <div class="form-group">
+                        <label for="collectionName">Nom de la collection</label>
+                        <input type="text" id="collectionName" placeholder="Ex: Films Romantiques du Dimanche">
+                    </div>
+                    <div class="form-group">
+                        <label for="collectionDescription">Description</label>
+                        <textarea id="collectionDescription" placeholder="Décrivez le thème de votre collection..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="elegant-btn secondary" id="cancelCollection">Annuler</button>
+                        <button type="submit" class="elegant-btn primary">Créer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Élégant -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <span>CineExplora</span>
+                </div>
+                <p>Votre compagnon raffiné pour l'exploration cinématographique</p>
+            </div>
+            <div class="footer-section">
+                <h4>Explorer</h4>
+                <a href="#">Nouveautés</a>
+                <a href="#">Tendances</a>
+                <a href="#">Classiques</a>
+            </div>
+            <div class="footer-section">
+                <h4>Communauté</h4>
+                <a href="#">Collections</a>
+                <a href="#">Recommendations</a>
+                <a href="#">Événements</a>
+            </div>
+            <div class="footer-section">
+                <h4>À Propos</h4>
+                <a href="#">Notre Histoire</a>
+                <a href="#">Contact</a>
+                <a href="#">Confidentialité</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CineExplora. Fait avec <i class="fas fa-heart"></i> pour les amoureux du cinéma.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
