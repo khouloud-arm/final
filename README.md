@@ -23,3 +23,5 @@ Mode cinéma avec ambiance tamisée
 Notes personnelles sur les films
 
 Recommendations intelligentes
+
+le lien de deployement est:  https://khouloud-arm.github.io/final/.
